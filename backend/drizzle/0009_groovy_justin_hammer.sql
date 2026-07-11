@@ -1,0 +1,1 @@
+ALTER TABLE "endpoints" ADD COLUMN "next_check_at" timestamp;

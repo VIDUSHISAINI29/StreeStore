@@ -1,0 +1,1 @@
+ALTER TABLE "endpoints" DROP COLUMN "next_check_at";
