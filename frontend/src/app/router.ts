@@ -24,34 +24,14 @@ const router = createRouter({
                name: 'dashboard',
                component: () =>
                   import('@/modules/dashboard/pages/dashboardPage.vue'),
-               meta: { requiresAuth: true },
+               // meta: { requiresAuth: true },
             },
             // {
             //    path: 'sign-in',
             //    name: 'signIn',
             //    component: () => import('@/modules/auth/pages/SignInPage.vue'),
             // },
-            {
-               path: 'endpoints',
-               name: 'endpoints',
-               component: () =>
-                  import('@/modules/endpoints/pages/EndpointsPage.vue'),
-            },
-            {
-               path: 'projects',
-               name: 'projects',
-               component: () =>
-                  import('@/modules/projects/pages/ProjectsPage.vue'),
-               children: [
-                  {
-                     path: ':projectId',
-                     name: 'project-details',
-                     component: () =>
-                        import('@/modules/projects/pages/ProjectDetailsPage.vue'),
-                     props: true,
-                  },
-               ],
-            },
+            
          ],
       },
 

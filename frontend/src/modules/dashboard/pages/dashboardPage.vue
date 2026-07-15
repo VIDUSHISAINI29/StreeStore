@@ -3,8 +3,7 @@
    import { useAuthStore } from '@/modules/auth/store/auth.store';
    import { useRouter } from 'vue-router';
    import { getAllProjectForUser, createProject } from '../api/dashboard.api';
-   import CreateProjectForm from '../../projects/components/CreateProjectForm.vue';
-   import overviewCard from '../components/overviewCard.vue';
+  
 
    type Project = {
       id: string;

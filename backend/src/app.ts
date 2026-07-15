@@ -6,7 +6,7 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import { toNodeHandler } from "better-auth/node";
 import * as Sentry from "@sentry/node";
-import './lib/redis.js';
+
 
 import { auth } from "./auth.js";
 import userRoutes from './modules/user/user.routes.js';

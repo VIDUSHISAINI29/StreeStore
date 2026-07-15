@@ -131,7 +131,7 @@
                class="tw-h-[250px] tw-flex tw-justify-center tw-items-center tw-w-[400px] tw-rounded-2xl tw-bg-gradient-to-br tw-from-pulse-cyan tw-to-pulse-lime ">
                <img
                   class="tw-h-[248px] tw-w-[398px] tw-rounded-2xl"
-                  src="/images/dashboard-overview.png"
+                  src=""
                   alt="" />
             </div>
          </div>
@@ -171,7 +171,7 @@
                      <div>
                         <img
                            class="tw-w-20"
-                           src="/images/logoOnly.png"
+                           src="/images/logo.png"
                            alt="Pulse Logo" />
                      </div>
                      <span class="tw-text-xl tw-font-semibold tw-text-white">
