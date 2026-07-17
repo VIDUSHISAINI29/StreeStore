@@ -43,11 +43,6 @@ export default {
           disabled: "#A66D7A",
         },
 
-        secondary: {
-          DEFAULT: "#FFFFFF",
-          hover: "#FAF7F2",
-          active: "#F5F1EB",
-        },
 
         accent: {
           DEFAULT: "#C8A96A",
