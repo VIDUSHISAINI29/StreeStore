@@ -1,89 +1,73 @@
 import type { ButtonHTMLAttributes } from "vue";
 
-/* -------------------------------------------------------------------------- */
-/* Variants                                                                   */
-/* -------------------------------------------------------------------------- */
+
+/* Variants */
+
 
 export type ButtonVariant =
   | "primary"
-  | "secondary"
+  | "surface"
   | "ghost"
   | "outline";
 
-/* -------------------------------------------------------------------------- */
-/* Sizes                                                                      */
-/* -------------------------------------------------------------------------- */
+
+/* Sizes */
+
 
 export type ButtonSize =
   | "sm"
   | "md"
   | "lg";
 
-/* -------------------------------------------------------------------------- */
-/* Icon Position                                                              */
-/* -------------------------------------------------------------------------- */
+
+/* Icon Position */
+
 
 export type ButtonIconPosition =
   | "left"
   | "right";
 
-/* -------------------------------------------------------------------------- */
-/* Props                                                                      */
-/* -------------------------------------------------------------------------- */
+
+  /* Props */
+
 
 export interface BaseButtonProps {
 
-  /**
-   * Visual appearance
-   */
+    
+  /* Visual appearance */
+
 
   variant?: ButtonVariant;
 
-  /**
-   * Button size
-   */
+  /* Button size */
 
   size?: ButtonSize;
 
-  /**
-   * Native button type
-   */
+  /* Native button type */
 
   type?: ButtonHTMLAttributes["type"];
 
-  /**
-   * Loading state
-   */
+  /* Loading state */
 
   loading?: boolean;
 
-  /**
-   * Disabled state
-   */
+  /* Disabled state */
 
   disabled?: boolean;
 
-  /**
-   * Expand to parent width
-   */
+  /* Expand to parent width */
 
   fullWidth?: boolean;
 
-  /**
-   * Rounded pill button
-   */
+  /* Rounded pill button */
 
   rounded?: boolean;
 
-  /**
-   * Icon name
-   */
+  /* Icon name */
 
   icon?: string;
 
-  /**
-   * Icon position
-   */
+  /*Icon position */
 
   iconPosition?: ButtonIconPosition;
 }
