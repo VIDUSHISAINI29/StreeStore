@@ -3,6 +3,7 @@
    import { useAuthStore } from '@/modules/auth/store/auth.store';
    import { useRouter } from 'vue-router';
    import { getAllProjectForUser, createProject } from '../api/dashboard.api';
+   import {BaseButton} from '@/shared/components/base/index';
   
 
    type Project = {
@@ -52,11 +53,14 @@
 </script>
 <template>
    <div class="tw-py-2 tw-px-4 tw-w-full">
-      <div class="tw-flex tw-flex-col tw-gap-6" v-if="projectsList.length">
+      <div class="tw-flex tw-flex-col tw-gap-6" >
          <div class="tw-flex tw-items-center tw-justify-between tw-text-4xl">
             <div class="tw-flex tw-gap-1 tw-flex-col">
-               <span class="tw-font-semibold tw-text-white">Dashboard</span>
-               <span class="tw-text-sm tw-text-pulse-grayText">
+               <span class="tw-font-semibold ">Dashboard</span>
+<BaseButton>
+      Shop Now
+    </BaseButton>
+               <span class="tw-text-sm ">
                   Overview of your projects and API health.
                </span>
             </div>
@@ -131,7 +135,7 @@
         
       </div>
       <div
-         v-else-if="projectsList.length === 0"
+      
          class="tw-flex tw-min-h-screen tw-items-center tw-justify-center">
          <div
             class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-2">
@@ -150,7 +154,7 @@
             </button>
          </div>
       </div>
-       <div class="tw-flex tw-h-screen tw-items-center tw-justify-center" v-else>
+       <div class="tw-flex tw-h-screen tw-items-center tw-justify-center" >
          <ProgressSpinner />
       </div>
       <CreateProjectForm

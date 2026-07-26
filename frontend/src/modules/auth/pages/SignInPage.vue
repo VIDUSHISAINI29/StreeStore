@@ -4,6 +4,7 @@
    import { useRoute, useRouter } from 'vue-router';
    import { authClient } from '@/plugins/auth-client';
    import {useToastNotification} from "@/shared/composables/useToastNotification";
+   import {BaseButton} from '@/shared/components/base/index';
 
    const route = useRoute();
    const router = useRouter();
@@ -105,6 +106,9 @@
             <div class="tw-flex tw-w-full tw-items-center tw-justify-start">
                <img class="tw-w-36" src="/images/logo.png" alt="" />
             </div>
+            <BaseButton>
+      Shop Now
+    </BaseButton>
             <div
                class="tw-w-44 tw-rounded-2xl tw-bg-pulse-cyan/10 tw-p-1 tw-text-center tw-text-[10px] tw-text-pulse-cyan">
                <span>API Monitoring for Developers</span>

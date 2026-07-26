@@ -28,7 +28,7 @@ const isActive = (item: typeof menuItems[number]) => {
     <div class=" tw-border-b-[1px]">
         <img class="tw-w-40 tw-p-1" src="/images/logo.png" alt="">
     </div>
-    <div class="tw-flex tw-flex-col tw-py-5 tw-text-gray-300 tw-border-b-[1px] tw-text-sm tw-gap-2">
+    <div class="tw-flex tw-flex-col tw-py-5  tw-border-b-[1px] tw-text-sm tw-gap-2">
        <div
   v-for="(menuItem, index) in menuItems"
   :key="index"

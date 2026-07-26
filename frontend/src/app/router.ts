@@ -4,15 +4,15 @@ import { useAuthStore } from '@/modules/auth/store/auth.store';
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
    routes: [
-      {
-         path: '/sign-in',
-         name: 'signIn',
-         component: () => import('@/modules/auth/pages/SignInPage.vue'),
-         meta: { public: true },
-      },
+      // {
+      //    path: '/sign-in',
+      //    name: 'signIn',
+      //    component: () => import('@/modules/auth/pages/SignInPage.vue'),
+      //    meta: { public: true },
+      // },
       {
          path: '/',
-         redirect: 'dashboard',
+         redirect: '/dashboard',
       },
 
       {
@@ -20,7 +20,7 @@ const router = createRouter({
          component: () => import('@/layout/AppLayout.vue'),
          children: [
             {
-               path: 'dashboard',
+               path: '/dashboard',
                name: 'dashboard',
                component: () =>
                   import('@/modules/dashboard/pages/dashboardPage.vue'),
