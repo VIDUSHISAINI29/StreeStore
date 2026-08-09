@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { BaseSpinner } from "@/shared/components/base/BaseSpinner";
+import { cn } from "@/shared/utils/cn";
+
 import { buttonVariants } from "./button.variants";
 import type { BaseButtonProps } from "./button.types";
-
-import { cn } from "@/shared/utils/cn";
 
 const props = withDefaults(defineProps<BaseButtonProps>(), {
   variant: "primary",
@@ -24,8 +25,8 @@ const buttonClasses = computed(() =>
       rounded: props.rounded,
       fullWidth: props.fullWidth,
       loading: props.loading,
-    })
-  )
+    }),
+  ),
 );
 
 const isDisabled = computed(() => props.disabled || props.loading);
@@ -45,29 +46,12 @@ const isDisabled = computed(() => props.disabled || props.loading);
     </template>
 
     <!-- Loading Spinner -->
-    <svg
+    <BaseSpinner
       v-if="loading"
-      class="tw-h-4 tw-w-4 tw-animate-spin"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <circle
-        class="tw-opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-
-      <path
-        class="tw-opacity-90"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-      />
-    </svg>
+      variant="inverse"
+      size="sm"
+      label="Loading"
+    />
 
     <!-- Label -->
     <span class="tw-inline-flex tw-items-center">

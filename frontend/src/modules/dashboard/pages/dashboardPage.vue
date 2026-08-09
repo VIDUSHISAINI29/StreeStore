@@ -4,7 +4,7 @@
    import { useRouter } from 'vue-router';
    import { getAllProjectForUser, createProject } from '../api/dashboard.api';
    import {BaseButton} from '@/shared/components/base/index';
-  
+   import {BaseSpinner} from '@/shared/components/base/index';
 
    type Project = {
       id: string;
@@ -57,9 +57,11 @@
          <div class="tw-flex tw-items-center tw-justify-between tw-text-4xl">
             <div class="tw-flex tw-gap-1 tw-flex-col">
                <span class="tw-font-semibold ">Dashboard</span>
-<BaseButton>
+<BaseButton :loading="false">
       Shop Now
     </BaseButton>
+
+
                <span class="tw-text-sm ">
                   Overview of your projects and API health.
                </span>
