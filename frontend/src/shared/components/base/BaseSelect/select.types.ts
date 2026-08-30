@@ -1,33 +1,31 @@
-import type { SelectHTMLAttributes } from "vue";
-
-/* -------------------------------------------------------------------------- */
-/* Select Variants                                                            */
-/* -------------------------------------------------------------------------- */
-
 export type SelectVariant =
   | "default"
   | "error"
   | "success";
-
-/* -------------------------------------------------------------------------- */
-/* Select Sizes                                                               */
-/* -------------------------------------------------------------------------- */
 
 export type SelectSize =
   | "sm"
   | "md"
   | "lg";
 
-/* -------------------------------------------------------------------------- */
-/* Select Props                                                               */
-/* -------------------------------------------------------------------------- */
+export interface SelectOption {
+  label: string;
+  value: string | number;
+  disabled?: boolean;
+}
 
 export interface BaseSelectProps {
   variant?: SelectVariant;
 
   size?: SelectSize;
 
-  modelValue?: string | number;
+  modelValue?: string | number | null;
+
+  options?: SelectOption[];
+
+  optionLabel?: string;
+
+  optionValue?: string;
 
   name?: string;
 
@@ -45,9 +43,5 @@ export interface BaseSelectProps {
 
   disabled?: boolean;
 
-  readonly?: boolean;
-
   fullWidth?: boolean;
-
-  autocomplete?: SelectHTMLAttributes["autocomplete"];
 }

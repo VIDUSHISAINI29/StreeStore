@@ -4,8 +4,8 @@ export const selectVariants = cva(
   [
     // Layout
     "tw-w-full",
-    "tw-outline-none",
-    "tw-appearance-none",
+    "tw-flex",
+    "tw-items-center",
 
     // Typography
     "tw-font-body",
@@ -17,6 +17,7 @@ export const selectVariants = cva(
 
     // Border
     "tw-border",
+    "tw-border-border",
 
     // Radius
     "tw-rounded-md",
@@ -31,34 +32,20 @@ export const selectVariants = cva(
 
     // Focus
     "focus:tw-outline-none",
-
-    // Disabled
-    "disabled:tw-cursor-not-allowed",
-    "disabled:tw-bg-surface-muted",
-    "disabled:tw-text-text-disabled",
-    "disabled:tw-border-border",
-
-    // Placeholder
-    "tw-text-text-primary",
   ],
   {
     variants: {
       variant: {
         default: [
-          "tw-border-border",
-
           "hover:tw-border-border-strong",
-
-          "focus:tw-border-border-focus",
+          "focus:tw-border-primary",
           "focus:tw-ring-2",
           "focus:tw-ring-primary/10",
         ],
 
         error: [
           "tw-border-error",
-
           "hover:tw-border-error",
-
           "focus:tw-border-error",
           "focus:tw-ring-2",
           "focus:tw-ring-error/10",
@@ -66,9 +53,7 @@ export const selectVariants = cva(
 
         success: [
           "tw-border-success",
-
           "hover:tw-border-success",
-
           "focus:tw-border-success",
           "focus:tw-ring-2",
           "focus:tw-ring-success/10",
@@ -77,23 +62,23 @@ export const selectVariants = cva(
 
       size: {
         sm: [
-          "tw-h-9",
-          "tw-pl-3",
-          "tw-pr-9",
+          "tw-min-h-9",
+          "tw-px-3",
+          "tw-py-2",
           "tw-text-xs",
         ],
 
         md: [
-          "tw-h-11",
-          "tw-pl-4",
-          "tw-pr-10",
+          "tw-min-h-11",
+          "tw-px-4",
+          "tw-py-2.5",
           "tw-text-sm",
         ],
 
         lg: [
-          "tw-h-12",
-          "tw-pl-5",
-          "tw-pr-11",
+          "tw-min-h-12",
+          "tw-px-5",
+          "tw-py-3",
           "tw-text-base",
         ],
       },
@@ -102,12 +87,22 @@ export const selectVariants = cva(
         true: "tw-w-full",
         false: "tw-w-auto",
       },
+
+      disabled: {
+        true: [
+          "tw-cursor-not-allowed",
+          "tw-bg-surface-muted",
+          "tw-text-text-disabled",
+          "tw-border-border",
+        ],
+      },
     },
 
     defaultVariants: {
       variant: "default",
       size: "md",
       fullWidth: true,
+      disabled: false,
     },
   },
 );
