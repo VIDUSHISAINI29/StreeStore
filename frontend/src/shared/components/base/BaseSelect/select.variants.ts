@@ -1,13 +1,15 @@
 import { cva } from "class-variance-authority";
 
-export const inputVariants = cva(
+export const selectVariants = cva(
   [
     // Layout
     "tw-w-full",
     "tw-outline-none",
+    "tw-appearance-none",
 
     // Typography
     "tw-font-body",
+    "tw-font-normal",
     "tw-text-text-primary",
 
     // Background
@@ -17,10 +19,10 @@ export const inputVariants = cva(
     "tw-border",
 
     // Radius
-    "tw-rounded-sm",
+    "tw-rounded-md",
 
-    // Placeholder
-    "placeholder:tw-text-text-muted",
+    // Cursor
+    "tw-cursor-pointer",
 
     // Transition
     "tw-transition-all",
@@ -28,7 +30,7 @@ export const inputVariants = cva(
     "tw-ease-smooth",
 
     // Focus
-    "focus-visible:tw-outline-none",
+    "focus:tw-outline-none",
 
     // Disabled
     "disabled:tw-cursor-not-allowed",
@@ -36,8 +38,8 @@ export const inputVariants = cva(
     "disabled:tw-text-text-disabled",
     "disabled:tw-border-border",
 
-    // Readonly
-    "read-only:tw-cursor-default",
+    // Placeholder
+    "tw-text-text-primary",
   ],
   {
     variants: {
@@ -54,7 +56,6 @@ export const inputVariants = cva(
 
         error: [
           "tw-border-error",
-          "tw-text-text-primary",
 
           "hover:tw-border-error",
 
@@ -65,7 +66,6 @@ export const inputVariants = cva(
 
         success: [
           "tw-border-success",
-          "tw-text-text-primary",
 
           "hover:tw-border-success",
 
@@ -77,20 +77,23 @@ export const inputVariants = cva(
 
       size: {
         sm: [
-          "tw-min-h-8",
-          "tw-px-3",
+          "tw-h-9",
+          "tw-pl-3",
+          "tw-pr-9",
           "tw-text-xs",
         ],
 
         md: [
-          "tw-min-h-10",
-          "tw-px-4",
+          "tw-h-11",
+          "tw-pl-4",
+          "tw-pr-10",
           "tw-text-sm",
         ],
 
         lg: [
-          "tw-min-h-12",
-          "tw-px-5",
+          "tw-h-12",
+          "tw-pl-5",
+          "tw-pr-11",
           "tw-text-base",
         ],
       },

@@ -1,9 +1,11 @@
 import { cva } from "class-variance-authority";
 
-export const inputVariants = cva(
+export const textareaVariants = cva(
   [
     // Layout
     "tw-w-full",
+    "tw-block",
+    "tw-resize-y",
     "tw-outline-none",
 
     // Typography
@@ -44,9 +46,7 @@ export const inputVariants = cva(
       variant: {
         default: [
           "tw-border-border",
-
           "hover:tw-border-border-strong",
-
           "focus:tw-border-border-focus",
           "focus:tw-ring-2",
           "focus:tw-ring-primary/10",
@@ -54,10 +54,7 @@ export const inputVariants = cva(
 
         error: [
           "tw-border-error",
-          "tw-text-text-primary",
-
           "hover:tw-border-error",
-
           "focus:tw-border-error",
           "focus:tw-ring-2",
           "focus:tw-ring-error/10",
@@ -65,10 +62,7 @@ export const inputVariants = cva(
 
         success: [
           "tw-border-success",
-          "tw-text-text-primary",
-
           "hover:tw-border-success",
-
           "focus:tw-border-success",
           "focus:tw-ring-2",
           "focus:tw-ring-success/10",
@@ -77,20 +71,23 @@ export const inputVariants = cva(
 
       size: {
         sm: [
-          "tw-min-h-8",
+          "tw-min-h-20",
           "tw-px-3",
+          "tw-py-2",
           "tw-text-xs",
         ],
 
         md: [
-          "tw-min-h-10",
+          "tw-min-h-24",
           "tw-px-4",
+          "tw-py-3",
           "tw-text-sm",
         ],
 
         lg: [
-          "tw-min-h-12",
+          "tw-min-h-32",
           "tw-px-5",
+          "tw-py-4",
           "tw-text-base",
         ],
       },

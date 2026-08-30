@@ -26,6 +26,13 @@ const router = createRouter({
                   import('@/modules/dashboard/pages/dashboardPage.vue'),
                // meta: { requiresAuth: true },
             },
+            {
+               path: '/test',
+               name: 'test',
+               component: () =>
+                  import('@/modules/dashboard/pages/test.vue'),
+               // meta: { requiresAuth: true },
+            },
             // {
             //    path: 'sign-in',
             //    name: 'signIn',
