@@ -3,54 +3,15 @@
    import Select from 'primevue/select';
 
    import { cn } from '@/shared/utils/cn';
-
    import { selectVariants } from './select.variants';
    import type { BaseSelectProps } from './select.types';
-
-const optionClasses = ({
-  context,
-}: {
-  context: {
-    selected: boolean;
-    focused: boolean;
-  };
-}) => [
-  "tw-flex",
-  "tw-min-h-10",
-  "tw-cursor-pointer",
-  "tw-items-center",
-  "tw-rounded-sm",
-  "tw-px-3",
-  "tw-py-2",
-  "tw-font-body",
-  "tw-text-sm",
-  "tw-transition-colors",
-  "tw-duration-fast",
-
-  // Selected
-  context.selected
-    ? [
-        "!tw-bg-primary",
-        "!tw-text-text-inverse",
-        "hover:!tw-bg-primary-hover",
-      ]
-    : [
-        "!tw-bg-surface",
-        "tw-text-text-primary",
-        "hover:!tw-bg-background-subtle",
-      ],
-
-  // Focused but not selected
-  context.focused && !context.selected
-    ? "!tw-bg-background-subtle"
-    : "",
-];
 
    const props = withDefaults(defineProps<BaseSelectProps>(), {
       variant: 'default',
       size: 'md',
       required: false,
       disabled: false,
+      readonly: false,
       fullWidth: true,
       optionLabel: 'label',
       optionValue: 'value',
@@ -60,9 +21,17 @@ const optionClasses = ({
       'update:modelValue': [value: string | number | null];
    }>();
 
+   /* -------------------------------------------------------------------------- */
+   /* ID                                                                          */
+   /* -------------------------------------------------------------------------- */
+
    const generatedId = useId();
 
    const selectId = computed(() => props.id || generatedId);
+
+   /* -------------------------------------------------------------------------- */
+   /* Accessibility                                                               */
+   /* -------------------------------------------------------------------------- */
 
    const describedBy = computed(() => {
       if (props.error) {
@@ -76,16 +45,23 @@ const optionClasses = ({
       return undefined;
    });
 
+   /* -------------------------------------------------------------------------- */
+   /* Select Classes                                                              */
+   /* -------------------------------------------------------------------------- */
+
    const selectClasses = computed(() =>
       cn(
          selectVariants({
             variant: props.error ? 'error' : props.variant,
             size: props.size,
             fullWidth: props.fullWidth,
-            disabled: props.disabled,
          }),
       ),
    );
+
+   /* -------------------------------------------------------------------------- */
+   /* Label Classes                                                               */
+   /* -------------------------------------------------------------------------- */
 
    const labelClasses = computed(() => {
       switch (props.size) {
@@ -99,6 +75,59 @@ const optionClasses = ({
             return 'tw-text-sm';
       }
    });
+
+   /* -------------------------------------------------------------------------- */
+   /* Option Classes                                                             */
+   /* -------------------------------------------------------------------------- */
+
+   const optionClasses = ({
+      context,
+   }: {
+      context: {
+         selected: boolean;
+         focused: boolean;
+      };
+   }) => {
+      const base = [
+         'tw-flex',
+         'tw-min-h-10',
+         'tw-w-full',
+         'tw-items-center',
+         'tw-justify-between',
+         'tw-rounded-sm',
+         'tw-px-3',
+         'tw-py-2',
+         'tw-font-body',
+         'tw-text-sm',
+         'tw-transition-colors',
+         'tw-duration-fast',
+         'tw-ease-smooth',
+         'tw-cursor-pointer',
+      ];
+
+      /* Selected */
+      if (context.selected) {
+         return {
+            class: [...base, '!tw-bg-primary', '!tw-text-text-inverse'],
+         };
+      }
+
+      /* Keyboard / hover focus */
+      if (context.focused) {
+         return {
+            class: [
+               ...base,
+               '!tw-bg-background-subtle',
+               '!tw-text-text-primary',
+            ],
+         };
+      }
+
+      /* Default */
+      return {
+         class: [...base, '!tw-bg-surface', '!tw-text-text-primary'],
+      };
+   };
 </script>
 
 <template>
@@ -111,8 +140,10 @@ const optionClasses = ({
       <label
          v-if="label"
          :for="selectId"
-         class="tw-font-body tw-font-medium tw-text-text-primary"
-         :class="labelClasses">
+         :class="[
+            'tw-font-body tw-font-medium tw-text-text-primary',
+            labelClasses,
+         ]">
          {{ label }}
 
          <span v-if="required" class="tw-ml-1 tw-text-error" aria-hidden="true">
@@ -122,7 +153,7 @@ const optionClasses = ({
 
       <!-- Select -->
       <Select
-        unstyled
+         unstyled
          :id="selectId"
          :name="name"
          :model-value="modelValue"
@@ -160,79 +191,28 @@ const optionClasses = ({
                ],
             },
 
-       overlay: {
-  class: [
-    "tw-mt-2",
-    "tw-overflow-hidden",
-    "tw-rounded-md",
-    "tw-border",
-    "tw-border-border",
-    "!tw-bg-surface",
-    "tw-shadow-lg",
-  ],
-},
+            overlay: {
+               class: [
+                  'tw-mt-2',
+                  'tw-min-w-full',
+                  'tw-overflow-hidden',
+                  'tw-rounded-md',
+                  'tw-border',
+                  'tw-border-border',
+                  '!tw-bg-surface',
+                  'tw-shadow-lg',
+               ],
+            },
 
             listContainer: {
-               class: 'tw-max-h-60',
+               class: ['tw-max-h-60', 'tw-overflow-auto'],
             },
-list: {
-  class: [
-    "tw-p-1.5",
-    "!tw-bg-surface",
-  ],
-},
 
-        const optionClasses = ({ context }: any) => {
-  if (context.selected) {
-    return [
-      "tw-flex",
-      "tw-min-h-10",
-      "tw-items-center",
-      "tw-rounded-sm",
-      "tw-px-3",
-      "tw-py-2",
-      "tw-font-body",
-      "tw-text-sm",
+            list: {
+               class: ['tw-m-0', 'tw-list-none', 'tw-p-1.5'],
+            },
 
-      "!tw-bg-primary",
-      "!tw-text-text-inverse",
-
-      "hover:!tw-bg-primary-hover",
-    ];
-  }
-
-  if (context.focused) {
-    return [
-      "tw-flex",
-      "tw-min-h-10",
-      "tw-items-center",
-      "tw-rounded-sm",
-      "tw-px-3",
-      "tw-py-2",
-      "tw-font-body",
-      "tw-text-sm",
-
-      "!tw-bg-background-subtle",
-      "!tw-text-text-primary",
-    ];
-  }
-
-  return [
-    "tw-flex",
-    "tw-min-h-10",
-    "tw-items-center",
-    "tw-rounded-sm",
-    "tw-px-3",
-    "tw-py-2",
-    "tw-font-body",
-    "tw-text-sm",
-
-    "!tw-bg-surface",
-    "!tw-text-text-primary",
-
-    "hover:!tw-bg-background-subtle",
-  ];
-};
+            option: optionClasses,
 
             emptyMessage: {
                class: [
@@ -245,6 +225,7 @@ list: {
             },
          }"
          @update:model-value="emit('update:modelValue', $event)">
+         <!-- Custom Option -->
          <template #option="{ option, selected }">
             <div
                class="tw-flex tw-w-full tw-items-center tw-justify-between tw-gap-3">
@@ -252,6 +233,7 @@ list: {
                   {{ option[optionLabel] }}
                </span>
 
+               <!-- Check -->
                <svg
                   v-if="selected"
                   xmlns="http://www.w3.org/2000/svg"
@@ -277,7 +259,7 @@ list: {
                aria-hidden="true">
                <path
                   fill-rule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 1.04l-4.25-4.5a.75.75 0 01.02-1.06z"
                   clip-rule="evenodd" />
             </svg>
          </template>
